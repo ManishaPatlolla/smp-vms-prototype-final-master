@@ -1,0 +1,50 @@
+@(message: String)
+@import play.i18n.Messages
+<!DOCTYPE html>
+<html lang="en" ng-app="smpvmsApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="description" content="">
+        <link rel="shortcut icon" href="#" type="image/png">
+
+        <title>@Messages.get("project.name")</title>
+
+
+        <link href="/assets/app/css/theme/style.css" rel="stylesheet">
+        <link href="/assets/app/css/theme/style-responsive.css" rel="stylesheet">
+            <!--data table-->
+        <link rel="stylesheet" href="/assets/app/js/theme/data-tables/DT_bootstrap.css" />
+            <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="/assets/app/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/app/css/animations.css">
+        <link rel="stylesheet" href="/assets/app/css/app.css">
+        @javascript()
+
+    </head>
+
+    <body class="sticky-header" >
+
+        <section >
+            @navigation()
+                <!-- main content start-->
+            <div class="main-content"  >
+
+                @header()
+                <div  ng-view ></div>
+                @footer()
+            </div>
+                <!-- main content end-->
+        </section>
+
+            <!-- Placed js at the end of the document so the pages load faster -->
+
+
+
+
+            <!--common scripts for all pages-->
+
+
+
+    </body>
+</html>

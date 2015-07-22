@@ -1,0 +1,28 @@
+<div class="page page-table" data-ng-controller="cameraClusterControler">
+
+
+    <section>
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="panel panel-default ">
+                    <button class="btn btn-default" ng-click="open('sm')">Add cluster</button>
+                    <div class="btn-group" dropdown>
+                        <button type="button" class="btn btn-success dropdown-toggle"> Action <span
+                                class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="test()">Action</a></li>
+                            <li><a href="javascript:;">Another action</a></li>
+                            <li><a href="javascript:;">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="javascript:;">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<div ng-include="'app/views/camera/cameraClusterSelectingTable.html'"></div>
+
+</div>

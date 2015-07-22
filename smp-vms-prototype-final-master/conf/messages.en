@@ -1,0 +1,6 @@
+project.name=SMP-VMS
+camera.notFound=Camera Not Found
+camera.addSuccess=Camera Added Successfully
+camera.updateSuccess=Camera Updated Successfully
+camera.deleteSuccess=Camera Deleted Successfully
+camera.nameAlreadyExist=Camera Name Already Exist

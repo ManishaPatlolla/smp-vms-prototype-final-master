@@ -1,0 +1,16 @@
+.input {
+    width: 70%; !important;
+    margin-left: 40px;
+}
+
+.submit{
+    margin-left: 100px
+}
+
+
+.viewlabel {
+
+    margin-left: 0px;
+    left: 20px;
+    padding-top: 7px;
+}

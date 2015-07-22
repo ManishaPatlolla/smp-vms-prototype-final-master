@@ -1,0 +1,207 @@
+<div>
+    <h1>
+        cameraSetting content
+    </h1>
+
+    <div class="container" style="padding-top:20px;">
+        <div ng-app="cameraApp" data-ng-controller="cameraController" class="container">
+            <div ng-show="error" class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <p>{{ error }}</p>
+            </div>
+
+            <p><a data-ng-click="showadd()" href="javascript:;" class="btn btn-info">Add New camera</a></p>
+
+            <div class="modal fade" id="cameraModel" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                            <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add camera</h4>
+                            <h4 class="modal-title" id="myModalLabel" ng-show="editMode">Edit camera</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form" name="addcameraform">
+                                <div class="form-group">
+                                    <tr>
+                                        <td>
+                                            <label for="title" class="col-sm-2 control-label">CameraNodes</label>
+                                        </td>
+                                        <td>
+                                            <div class="col-sm-10">
+                                                <input type="text" data-ng-model="camera.nodes" class="form-control input" id="title" placeholder="Camera Nodes" required title="Enter camera nodes" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </div>
+                                <div class="form-group">
+                                    <tr>
+                                        <td>
+                                            <label for="title" class="col-sm-2 control-label">CameraName</label>
+                                        </td>
+                                        <td>
+                                            <div class="col-sm-10">
+                                                <input type="text" data-ng-model="camera.name" class="form-control input" id="title" placeholder="Camera Name" required title="Enter camera name" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </div>
+                                <div class="form-group">
+                                    <tr>
+                                        <td>
+                                            <label for="title" class="col-sm-2 control-label">CameraLocation</label>
+                                        </td>
+                                        <td>
+                                            <div class="col-sm-10">
+                                                <input type="text" data-ng-model="camera.location" class="form-control input" id="title" placeholder="Camera Location" required title="Enter camera location" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="title" class="col-sm-2 control-label">CameraGroup</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" data-ng-model="camera.groupname" class="form-control input" id="title" placeholder="Camera Group" required title="Enter camera group" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <span data-ng-hide="editMode">
+                                            <input type="submit" value="Add" ng-disabled="addcameraform.$invalid" data-ng-click="add()" class="btn btn-info submit" />
+                                        </span>
+                                        <span data-ng-show="editMode">
+                                            <input type="submit" value="Update" ng-disabled="addcameraform.$invalid" data-ng-click="update()" class="btn btn-info submit" />
+                                        </span>
+                                        <input type="button" value="Cancel" data-ng-click="cancel()" class="btn btn-info" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Cameras List</h1>
+            <table class="table table-hover">
+                <tr>
+                    <td><strong>CameraID</strong></td>
+                    <td><strong>Nodes</strong></td>
+                    <td><strong>CameraName</strong></td>
+                    <td><strong>Location</strong></td>
+                    <td><strong>Camera Group</strong></td>
+                    <td><strong>Operations</strong></td>
+                </tr>
+
+                <tr data-ng-repeat="camera in cameras | filter : paginate">
+                    <td>
+                        <p>{{ camera.id }}</p>
+                    </td>
+                    <td>
+                        <p>{{ camera.nodes }}</p>
+                    </td>
+                    <td>
+                        <p>{{ camera.name }}</p>
+
+                    </td>
+                    <td>
+                        <p>{{ camera.location }}</p>
+
+                    </td>
+
+                    <td>
+                        <p>{{ camera.groupname }}</p>
+
+                    </td>
+
+                    <td>
+                        <p>
+                            <a data-ng-click="get(camera)" href="javascript:;" class="btn btn-info">View</a> |
+                            <a data-ng-click="edit(camera)" href="javascript:;" class="btn btn-info">Edit</a> |
+                            <a data-ng-click="showconfirm(camera)" href="javascript:;" class="btn btn-danger">Delete</a>
+                        </p>
+
+                    </td>
+                </tr>
+            </table>
+            <hr />
+            <pagination total-items="totalItems" ng-model="currentPage"
+                        max-size="5" boundary-links="true"
+                        items-per-page="numPerPage" class="pagination-sm">
+            </pagination>
+
+
+
+
+            <div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                            <h4 class="modal-title" id="myModalLabel">View camera</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form" name="viewcamera">
+                                <div class="form-group">
+                                    <label for="ID" class="col-sm-2 control-label">CameraID</label>
+                                    <div class="col-sm-10 viewlabel">
+                                        {{camera.id}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Nodes" class="col-sm-2 control-label">CameraNodes</label>
+                                    <div class="col-sm-10 viewlabel">
+                                        {{camera.nodes}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="CameraName" class="col-sm-2 control-label">CameraName</label>
+                                    <div class="col-sm-10 viewlabel">
+                                        {{camera.name}}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="CameraLocation" class="col-sm-2 control-label">CameraLocation</label>
+                                    <div class="col-sm-10 viewlabel">
+                                        {{camera.location}}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="CameraGroup" class="col-sm-2 control-label">CameraGroup</label>
+                                    <div class="col-sm-10 viewlabel">
+                                        {{camera.groupname}}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                            <h4 class="modal-title" id="myModalLabel">Confirm Action</h4>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure to delete?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger"data-ng-click="delete()">Ok</button>
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

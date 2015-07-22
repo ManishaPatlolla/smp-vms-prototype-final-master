@@ -1,0 +1,50 @@
+#cameras:
+
+    - &dbsCluster !!models.CameraCluster
+        id:                 1
+        name:               dbsCluster
+    - &fusionopolisCluster !!models.CameraCluster
+        id:                 2
+        name:               fusionopolisCluster
+    - &jurongCluster !!models.CameraCluster
+        id:                 3
+        name:               jurongCluster
+    - &clementiCluster !!models.CameraCluster
+        id:                 4
+        name:               clementiCluster
+    - &doverCluster !!models.CameraCluster
+        id:                 5
+        name:               doverCluster
+    - &oneNorthCluster !!models.CameraCluster
+        id:                 6
+        name:               oneNorthCluster
+    - &paradiseCluster !!models.CameraCluster
+        id:                 7
+        name:               paradiseCluster
+    - &orchardCluster !!models.CameraCluster
+        id:                 8
+        name:               orchardCluster
+
+
+    - !!models.Camera
+        id:                 1
+        name:               camera 1
+        friendly_name:      camera 1
+        node_name:               node 1
+        camera:             1
+        location_name:       one north
+        latitude:           0.1545635
+        longitude:          135.234234234
+        quality:            1
+        cameraCluster:      *dbsCluster
+
+
+
+
+
+
+
+
+
+
+

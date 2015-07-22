@@ -1,0 +1,45 @@
+
+<!-- Logo -->
+<div class="logo" data-ng-controller="AdminAppCtrl">
+    <a href="#/">
+        <i class="logo-icon fa fa-slack"></i>
+        <span>{{info.theme_name}}</span>
+    </a>
+</div>
+<div id="nav-wrapper">
+    <ul id="nav"
+        data-ng-controller="NavCtrl"
+        data-slim-scroll
+        data-collapse-nav
+        data-highlight-active>
+        <li>
+            <a href="#/dashboard"> <i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+        </li>
+        <li>
+            <a href="#/camera"><i class="fa fa-camera"></i><span>Camera</span></a>
+            <ul>
+                <li><a href="#/camera/cameraSetting"><i
+                        class="fa fa-angle-right"></i><span> Camera Setting</span></a></span></li>
+                <li><a href="#/camera/cameraCluster"><i
+                        class="fa fa-angle-right"></i><span> Camera Cluster</span></a></span></li>
+                <li><a href="#/camera/cameraAccessProfile"><i
+                        class="fa fa-angle-right"></i><span> Camera Access Profile</span></a></span></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#/manageUser"><i class="fa fa-home"></i><span>Manage User</span></a>
+            <ul>
+                <li><a href="#/manageUser/userGroup"><i
+                        class="fa fa-angle-right"></i><span> User Group</span></a></span></li>
+            </ul>
+        </li>
+        <li class="nav-task">
+            <a href="#/event">
+                <i class="fa fa-check-square-o"></i><span> Event Notification</span>
+                <span class="badge badge-danger main-badge">{{eventInfo.event_number}}</span>
+            </a>
+        </li>
+    </ul>
+
+</div>

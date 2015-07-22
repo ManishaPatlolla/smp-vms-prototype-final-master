@@ -1,0 +1,48 @@
+@(message: String)
+@import play.i18n.Messages
+<!DOCTYPE html>
+<html lang="en" ng-app="smpvmsApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="/assets/app/img/favicon.ico">
+
+        <title>@Messages.get("project.name")</title>
+
+            <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="/assets/app/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/app/css/animations.css">
+        <link rel="stylesheet" href="/assets/app/css/app.css">
+
+        @javascript()
+
+    </head>
+
+    <body>
+
+        @navigation()
+
+        <div ng-view class="container">
+
+            @*<div class="starter-template">*@
+                @*<h1>Bootstrap starter template</h1>*@
+                @*<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>*@
+            @*</div>*@
+            @*<div ng-view class="view-frame"></div>*@
+
+        </div><!-- /.container -->
+
+
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+
+            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+        @footer()
+    </body>
+</html>

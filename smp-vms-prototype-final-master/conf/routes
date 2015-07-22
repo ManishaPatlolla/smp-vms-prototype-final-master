@@ -1,0 +1,28 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET           /                             @controllers.Application.index()
+
+#Cameras
+GET           /api/cameras                  @controllers.Cameras.findAll(search: String ?= "")
+GET           /api/cameras/:id              @controllers.Cameras.get(id:Long)
+POST          /api/cameras                  @controllers.Cameras.add()
+PUT           /api/cameras/:id              @controllers.Cameras.update(id:Long)
+DELETE        /api/cameras/:id              @controllers.Cameras.delete(id:Long)
+
+#Camera Cluster
+POST          /api/cameraCluster                                @controllers.CameraClusterController.add()
+GET           /api/cameraCluster/:pageSize/:pageIndex           @controllers.CameraClusterController.findAll(pageSize: Integer,pageIndex: Integer)
+GET           /api/cameraCluster/:id                            @controllers.CameraClusterController.get(id:Long)
+PUT           /api/cameraCluster/:id                            @controllers.CameraClusterController.modify(id:Long)
+DELETE        /api/cameraCluster/:id                            @controllers.CameraClusterController.delete(id:Long)
+GET           /api/cameraCluster/affectedCameras/:id            @controllers.CameraClusterController.getAffectedCamerasBeforeDelete(id:Long)
+
+
+#Search And View Camera
+GET           /api/searchCamera/:node        @controllers.SearchAndViewCameraController.searchByNode(node:String)
+GET           /api/searchCamera/             @controllers.SearchAndViewCameraController.searchAndViewCamera()
+# Map static resources from the /public folder to the /assets URL path
+GET           /*file                        controllers.Assets.at(path="/public", file)
